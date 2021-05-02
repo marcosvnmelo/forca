@@ -9,9 +9,11 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class Forca extends cc.Component {
-  private word: string = null;
   private guessWord: string = null;
   private lifes: number = null;
+
+  @property(cc.String)
+  public word: string = "";
 
   @property(cc.Label)
   guessWordLabel: cc.Label = null;
@@ -45,7 +47,6 @@ export default class Forca extends cc.Component {
   // update (dt) {}
 
   setupGame(): void {
-    this.word = 'bola';
     this.lifes = 6;
 
     let newGuessWord = '';
