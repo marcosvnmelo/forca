@@ -386,7 +386,7 @@
       "array": [
         0,
         0,
-        250.28134169370279,
+        291.8505610753558,
         0,
         0,
         0,
@@ -739,7 +739,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Forca",
+    "_name": "Gibbet",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -807,7 +807,7 @@
       "__id__": 16
     },
     "_enabled": true,
-    "word": "mae",
+    "word": "rola",
     "guessWordLabel": {
       "__id__": 15
     },

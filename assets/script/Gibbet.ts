@@ -8,12 +8,12 @@
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class Forca extends cc.Component {
+export default class Gibbet extends cc.Component {
   private guessWord: string = null;
   private lifes: number = null;
 
   @property(cc.String)
-  public word: string = "";
+  public word: string = '';
 
   @property(cc.Label)
   guessWordLabel: cc.Label = null;
