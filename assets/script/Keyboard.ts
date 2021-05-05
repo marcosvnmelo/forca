@@ -6,7 +6,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 import Gibbet from './Gibbet';
-import LittleSnake from './LittleSnake';
+import LittleSnake, { Direction } from './LittleSnake';
 
 const { ccclass, property } = cc._decorator;
 
@@ -21,12 +21,23 @@ export default class Keyboard extends cc.Component {
   // LIFE-CYCLE CALLBACKS:
 
   onLoad() {
+    // this.debugLetters();
     this.getDirectionsFromKeyboard();
   }
 
   start() {}
 
   // update (dt) {}
+
+  debugLetters() {
+    cc.systemEvent.on(
+      cc.SystemEvent.EventType.KEY_DOWN,
+      (event: cc.Event.EventKeyboard) => {
+        console.log(event.keyCode);
+      },
+      this
+    );
+  }
 
   getLettersFromKeyboard() {
     cc.systemEvent.on(
@@ -51,17 +62,17 @@ export default class Keyboard extends cc.Component {
       cc.SystemEvent.EventType.KEY_DOWN,
       (event: cc.Event.EventKeyboard) => {
         switch (event.keyCode) {
-          case cc.macro.KEY.w || cc.macro.KEY.up:
-            this.snake.direction = 'up';
+          case cc.macro.KEY.w || 38:
+            this.snake.direction = Direction.UP;
             break;
-          case cc.macro.KEY.s || cc.macro.KEY.down:
-            this.snake.direction = 'down';
+          case cc.macro.KEY.s || 40:
+            this.snake.direction = Direction.DOWN;
             break;
-          case cc.macro.KEY.a || cc.macro.KEY.left:
-            this.snake.direction = 'left';
+          case cc.macro.KEY.a || 37:
+            this.snake.direction = Direction.LEFT;
             break;
-          case cc.macro.KEY.d || cc.macro.KEY.right:
-            this.snake.direction = 'right';
+          case cc.macro.KEY.d || 39:
+            this.snake.direction = Direction.RIGHT;
             break;
         }
       },
