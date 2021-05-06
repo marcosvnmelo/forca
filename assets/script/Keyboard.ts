@@ -5,8 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import Gibbet from './Gibbet';
-import LittleSnake, { Direction } from './LittleSnake';
+import Gibbet from './/Gibbet/Gibbet';
+import LittleSnake, { DIRECTION } from './Snake/LittleSnake';
 
 const { ccclass, property } = cc._decorator;
 
@@ -62,19 +62,31 @@ export default class Keyboard extends cc.Component {
       cc.SystemEvent.EventType.KEY_DOWN,
       (event: cc.Event.EventKeyboard) => {
         switch (event.keyCode) {
-          case cc.macro.KEY.w || 38:
-            this.snake.direction = Direction.UP;
+          case cc.macro.KEY.w || cc.macro.KEY.up:
+            this.snake.direction = 'UP';
+            this.snake.move();
             break;
-          case cc.macro.KEY.s || 40:
-            this.snake.direction = Direction.DOWN;
+          case cc.macro.KEY.s || cc.macro.KEY.down:
+            this.snake.direction = 'DOWN';
+            this.snake.move();
             break;
-          case cc.macro.KEY.a || 37:
-            this.snake.direction = Direction.LEFT;
+          case cc.macro.KEY.a || cc.macro.KEY.right:
+            this.snake.direction = 'LEFT';
+            this.snake.move();
             break;
-          case cc.macro.KEY.d || 39:
-            this.snake.direction = Direction.RIGHT;
+          case cc.macro.KEY.d || cc.macro.KEY.right:
+            this.snake.direction = 'RIGHT';
+            this.snake.move();
             break;
         }
+      },
+      this
+    );
+
+    cc.systemEvent.on(
+      cc.SystemEvent.EventType.KEY_UP,
+      (event: cc.Event.EventKeyboard) => {
+        this.snake.stop();
       },
       this
     );

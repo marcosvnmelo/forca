@@ -1,0 +1,37 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "Snake_idle",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.5166666666666667,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "429c4cec-6f2a-4207-b939-bb726bc4a487"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "3f074798-8b7b-4b4d-82d5-c3969ccb1db2"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "429c4cec-6f2a-4207-b939-bb726bc4a487"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
