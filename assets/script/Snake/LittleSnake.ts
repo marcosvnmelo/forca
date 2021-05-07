@@ -17,8 +17,8 @@ export enum DIRECTION {
 }
 
 export enum SNAKE_STATE {
-  IDLE,
-  WALKING,
+  Snake_idle,
+  Snake_walking,
 }
 
 @ccclass
@@ -27,9 +27,9 @@ export default class LittleSnake extends cc.Component {
   private speed: number = 0;
 
   direction: keyof typeof DIRECTION = 'UP';
-  state: keyof typeof SNAKE_STATE = 'IDLE';
+  state: SNAKE_STATE = SNAKE_STATE.Snake_idle;
 
-  @property(Main)
+  @property()
   game: Main = null;
 
   // LIFE-CYCLE CALLBACKS:
@@ -85,18 +85,30 @@ export default class LittleSnake extends cc.Component {
   // }
 
   move() {
-    if (this.state == 'IDLE') {
+    if (this.state == SNAKE_STATE.Snake_idle) {
       this.speed = 5;
-      this.node.getComponent(cc.Animation).play('Snake_walking');
-      this.state = 'WALKING';
+      this.node
+        .getComponent(cc.Animation)
+        .play(SNAKE_STATE[SNAKE_STATE.Snake_walking]);
+      this.state = SNAKE_STATE.Snake_walking;
+
+      if (this.direction == 'LEFT') {
+        this.node.scaleX = 1;
+      }
+
+      if (this.direction == 'RIGHT') {
+        this.node.scaleX = -1;
+      }
     }
   }
 
   stop() {
-    if (this.state == 'WALKING') {
+    if (this.state == SNAKE_STATE.Snake_walking) {
       this.speed = 0;
-      this.node.getComponent(cc.Animation).play('Snake_idle');
-      this.state = 'IDLE';
+      this.node
+        .getComponent(cc.Animation)
+        .play(SNAKE_STATE[SNAKE_STATE.Snake_idle]);
+      this.state = SNAKE_STATE.Snake_idle;
     }
   }
 
